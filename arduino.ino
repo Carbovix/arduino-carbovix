@@ -44,7 +44,7 @@ void setup() {
   Serial.println("Sis_iniciado!");
 }
 void loop() {
-    
+
   int leitura = analogRead(MQ135);
   float ppm   = calcularPPM(leitura);
 
@@ -58,3 +58,10 @@ void loop() {
   lcd.setCursor(5, 1);
   lcd.print(ppm, 1);
   lcd.print("    ");
+
+  // LED liga sempre que detectar gás
+  if (ppm > 0) {
+    digitalWrite(LED, HIGH);
+  } else {
+    digitalWrite(LED, LOW);
+  }
