@@ -23,3 +23,23 @@ float calcularPPM(int valorADC) {
   float ppm     = 116.6020682 * pow(ratio, -2.769034857);
   return ppm;
 }
+
+void setup() {
+  Serial.begin(9600);
+  lcd.init();
+  lcd.backlight();
+
+  pinMode(BUZZER, OUTPUT);
+  pinMode(LED, OUTPUT);
+  noTone(BUZZER);
+  digitalWrite(LED, LOW);
+
+  lcd.setCursor(0, 0);
+  lcd.print("CARBOVIX v.1");
+  lcd.setCursor(0, 1);
+  lcd.print("Inicializando...");
+  delay(3000);
+  lcd.clear();
+  
+  Serial.println("Sis_iniciado!");
+}
