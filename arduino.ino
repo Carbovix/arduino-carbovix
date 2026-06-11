@@ -8,3 +8,10 @@
 #include <math.h>
 #include <LiquidCrystal_I2C.h>
 LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+#define MQ135         A0
+#define LED           6
+#define BUZZER        7
+float R0 = 70.62;      // Valor calibrado!
+#define LIMITE_BUZZER 1500
+
