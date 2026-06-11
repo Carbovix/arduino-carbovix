@@ -65,3 +65,15 @@ void loop() {
   } else {
     digitalWrite(LED, LOW);
   }
+  
+  // Buzzer só apita acima de 1500 PPM
+  if (ppm > LIMITE_BUZZER) {
+    tone(BUZZER, 1000);
+    lcd.setCursor(0, 0);
+    lcd.print("!! ALERTA GAS !!");
+    Serial.println("ALERTA! GAS ALTO!");
+  } else {
+    noTone(BUZZER);
+  }
+  delay(2000);
+}
