@@ -40,6 +40,21 @@ void setup() {
   lcd.print("Inicializando...");
   delay(3000);
   lcd.clear();
-  
+
   Serial.println("Sis_iniciado!");
 }
+void loop() {
+    
+  int leitura = analogRead(MQ135);
+  float ppm   = calcularPPM(leitura);
+
+  Serial.print("PPM: ");
+  Serial.println(ppm);
+
+  lcd.setCursor(0, 0);
+  lcd.print("Qualidade Ar    ");
+  lcd.setCursor(0, 1);
+  lcd.print("PPM:");
+  lcd.setCursor(5, 1);
+  lcd.print(ppm, 1);
+  lcd.print("    ");
