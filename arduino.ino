@@ -15,3 +15,11 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 float R0 = 70.62;      // Valor calibrado!
 #define LIMITE_BUZZER 1500
 
+float calcularPPM(int valorADC) {
+  float Vrl = valorADC * (5.0 / 1023.0);
+  if (Vrl <= 0.01) return 0;
+  float Rsensor = (5.0 - Vrl) / Vrl * R0;
+  float ratio   = Rsensor / R0;
+  float ppm     = 116.6020682 * pow(ratio, -2.769034857);
+  return ppm;
+}
